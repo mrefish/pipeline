@@ -41,6 +41,8 @@ pipeline {
       steps {
         script {
           env['BARCODES'] = sh(script: """env LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 6""", returnStdout: true).trim()
+        }
+        script {
           params['BARCODES'] = sh(script: """env LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 6""", returnStdout: true).trim()
         }
         echo "Starting ${params.EXPERIMENT_ID}"
